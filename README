@@ -1,0 +1,10 @@
+Shopify's liquid implementation in go
+
+This is mostly an experiment, ideally it will fully implement liquid soon, for
+now nothing works as expected.
+
+TODO
+
+* Implement logic tags
+* Implement foo.bar indentifieers
+* Implement filters

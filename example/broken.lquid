@@ -17,7 +17,7 @@
 
   <body>
 
-    <h1>{{ description | split: '~' | first }}</h1>
+    <h1>{{ description 
 
     <h2>{{ description | split: '~' | last }}</h2>
 

@@ -1,0 +1,211 @@
+
+0: shift/reduce conflict (shift 4(0), red'n 1(0)) on itemLeftDelimOutput
+0: shift/reduce conflict (shift 3(0), red'n 1(0)) on itemText
+state 0
+	$accept: .template $end 
+	template: .    (1)
+
+	itemLeftDelimOutput  shift 4
+	itemText  shift 3
+	.  reduce 1 (src line 49)
+
+	template  goto 1
+	liquid  goto 2
+
+state 1
+	$accept:  template.$end 
+	template:  template.liquid 
+	template:  template.itemText 
+
+	$end  accept
+	itemLeftDelimOutput  shift 4
+	itemText  shift 6
+	.  error
+
+	liquid  goto 5
+
+2: shift/reduce conflict (shift 7(0), red'n 2(0)) on itemText
+state 2
+	template:  liquid.    (2)
+	template:  liquid.itemText 
+
+	itemText  shift 7
+	.  reduce 2 (src line 53)
+
+
+3: shift/reduce conflict (shift 4(0), red'n 3(0)) on itemLeftDelimOutput
+state 3
+	template:  itemText.    (3)
+	template:  itemText.liquid 
+
+	itemLeftDelimOutput  shift 4
+	.  reduce 3 (src line 57)
+
+	liquid  goto 8
+
+state 4
+	liquid:  itemLeftDelimOutput.outputData itemRightDelimOutput 
+
+	itemIdentifier  shift 14
+	itemString  shift 11
+	itemNumberLit  shift 12
+	itemNumber  shift 13
+	.  error
+
+	outputSource  goto 10
+	outputData  goto 9
+
+state 5
+	template:  template liquid.    (6)
+
+	.  reduce 6 (src line 72)
+
+
+state 6
+	template:  template itemText.    (7)
+
+	.  reduce 7 (src line 76)
+
+
+state 7
+	template:  liquid itemText.    (5)
+
+	.  reduce 5 (src line 67)
+
+
+state 8
+	template:  itemText liquid.    (4)
+
+	.  reduce 4 (src line 62)
+
+
+state 9
+	liquid:  itemLeftDelimOutput outputData.itemRightDelimOutput 
+
+	itemRightDelimOutput  shift 15
+	.  error
+
+
+state 10
+	outputData:  outputSource.    (17)
+	outputData:  outputSource.itemPipe outputFilter 
+
+	itemPipe  shift 16
+	.  reduce 17 (src line 112)
+
+
+state 11
+	outputSource:  itemString.    (9)
+
+	.  reduce 9 (src line 90)
+
+
+state 12
+	outputSource:  itemNumberLit.    (10)
+
+	.  reduce 10 (src line 92)
+
+
+state 13
+	outputSource:  itemNumber.    (11)
+
+	.  reduce 11 (src line 94)
+
+
+state 14
+	outputSource:  itemIdentifier.    (12)
+	outputSource:  itemIdentifier.itemDot itemField 
+
+	itemDot  shift 17
+	.  reduce 12 (src line 96)
+
+
+state 15
+	liquid:  itemLeftDelimOutput outputData itemRightDelimOutput.    (8)
+
+	.  reduce 8 (src line 83)
+
+
+state 16
+	outputData:  outputSource itemPipe.outputFilter 
+
+	itemIdentifier  shift 19
+	.  error
+
+	outputFilter  goto 18
+
+state 17
+	outputSource:  itemIdentifier itemDot.itemField 
+
+	itemField  shift 20
+	.  error
+
+
+state 18
+	outputFilter:  outputFilter.itemPipe outputFilter 
+	outputData:  outputSource itemPipe outputFilter.    (18)
+
+	itemPipe  shift 21
+	.  reduce 18 (src line 117)
+
+
+state 19
+	outputFilter:  itemIdentifier.    (14)
+	outputFilter:  itemIdentifier.itemColon outputSource 
+
+	itemColon  shift 22
+	.  reduce 14 (src line 102)
+
+
+state 20
+	outputSource:  itemIdentifier itemDot itemField.    (13)
+
+	.  reduce 13 (src line 98)
+
+
+state 21
+	outputFilter:  outputFilter itemPipe.outputFilter 
+
+	itemIdentifier  shift 19
+	.  error
+
+	outputFilter  goto 23
+
+state 22
+	outputFilter:  itemIdentifier itemColon.outputSource 
+
+	itemIdentifier  shift 14
+	itemString  shift 11
+	itemNumberLit  shift 12
+	itemNumber  shift 13
+	.  error
+
+	outputSource  goto 24
+
+23: shift/reduce conflict (shift 21(0), red'n 16(0)) on itemPipe
+state 23
+	outputFilter:  outputFilter.itemPipe outputFilter 
+	outputFilter:  outputFilter itemPipe outputFilter.    (16)
+
+	itemPipe  shift 21
+	.  reduce 16 (src line 108)
+
+
+state 24
+	outputFilter:  itemIdentifier itemColon outputSource.    (15)
+
+	.  reduce 15 (src line 105)
+
+
+27 terminals, 6 nonterminals
+19 grammar rules, 25/2000 states
+5 shift/reduce, 0 reduce/reduce conflicts reported
+55 working sets used
+memory: parser 8/30000
+0 extra closures
+23 shift entries, 1 exceptions
+9 goto entries
+0 entries saved by goto default
+Optimizer space used: output 31/30000
+31 table entries, 5 zero
+maximum spread: 26, maximum offset: 25
