@@ -7,7 +7,7 @@ state 0
 
 	itemLeftDelimOutput  shift 4
 	itemText  shift 3
-	.  reduce 1 (src line 49)
+	.  reduce 1 (src line 48)
 
 	template  goto 1
 	liquid  goto 2
@@ -30,7 +30,7 @@ state 2
 	template:  liquid.itemText 
 
 	itemText  shift 7
-	.  reduce 2 (src line 53)
+	.  reduce 2 (src line 52)
 
 
 3: shift/reduce conflict (shift 4(0), red'n 3(0)) on itemLeftDelimOutput
@@ -39,7 +39,7 @@ state 3
 	template:  itemText.liquid 
 
 	itemLeftDelimOutput  shift 4
-	.  reduce 3 (src line 57)
+	.  reduce 3 (src line 56)
 
 	liquid  goto 8
 
@@ -58,25 +58,25 @@ state 4
 state 5
 	template:  template liquid.    (6)
 
-	.  reduce 6 (src line 72)
+	.  reduce 6 (src line 71)
 
 
 state 6
 	template:  template itemText.    (7)
 
-	.  reduce 7 (src line 76)
+	.  reduce 7 (src line 75)
 
 
 state 7
 	template:  liquid itemText.    (5)
 
-	.  reduce 5 (src line 67)
+	.  reduce 5 (src line 66)
 
 
 state 8
 	template:  itemText liquid.    (4)
 
-	.  reduce 4 (src line 62)
+	.  reduce 4 (src line 61)
 
 
 state 9
@@ -91,25 +91,25 @@ state 10
 	outputData:  outputSource.itemPipe outputFilter 
 
 	itemPipe  shift 16
-	.  reduce 17 (src line 112)
+	.  reduce 17 (src line 111)
 
 
 state 11
 	outputSource:  itemString.    (9)
 
-	.  reduce 9 (src line 90)
+	.  reduce 9 (src line 89)
 
 
 state 12
 	outputSource:  itemNumberLit.    (10)
 
-	.  reduce 10 (src line 92)
+	.  reduce 10 (src line 91)
 
 
 state 13
 	outputSource:  itemNumber.    (11)
 
-	.  reduce 11 (src line 94)
+	.  reduce 11 (src line 93)
 
 
 state 14
@@ -117,13 +117,13 @@ state 14
 	outputSource:  itemIdentifier.itemDot itemField 
 
 	itemDot  shift 17
-	.  reduce 12 (src line 96)
+	.  reduce 12 (src line 95)
 
 
 state 15
 	liquid:  itemLeftDelimOutput outputData itemRightDelimOutput.    (8)
 
-	.  reduce 8 (src line 83)
+	.  reduce 8 (src line 82)
 
 
 state 16
@@ -146,7 +146,7 @@ state 18
 	outputData:  outputSource itemPipe outputFilter.    (18)
 
 	itemPipe  shift 21
-	.  reduce 18 (src line 117)
+	.  reduce 18 (src line 116)
 
 
 state 19
@@ -154,13 +154,13 @@ state 19
 	outputFilter:  itemIdentifier.itemColon outputSource 
 
 	itemColon  shift 22
-	.  reduce 14 (src line 102)
+	.  reduce 14 (src line 101)
 
 
 state 20
 	outputSource:  itemIdentifier itemDot itemField.    (13)
 
-	.  reduce 13 (src line 98)
+	.  reduce 13 (src line 97)
 
 
 state 21
@@ -188,13 +188,13 @@ state 23
 	outputFilter:  outputFilter itemPipe outputFilter.    (16)
 
 	itemPipe  shift 21
-	.  reduce 16 (src line 108)
+	.  reduce 16 (src line 107)
 
 
 state 24
 	outputFilter:  itemIdentifier itemColon outputSource.    (15)
 
-	.  reduce 15 (src line 105)
+	.  reduce 15 (src line 104)
 
 
 27 terminals, 6 nonterminals

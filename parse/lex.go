@@ -481,7 +481,6 @@ func lexSpace(l *lexer) stateFn {
 	for ' ' == l.peek() {
 		l.next()
 	}
-	//l.emit(itemSpace)
 	l.ignore()
 	return lexInsideAction(l)
 }

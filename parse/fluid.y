@@ -1,7 +1,6 @@
 %{
 package parse
-import ("errors"
-)
+import ("errors")
 
 var ParseTree ListNode
 %}
@@ -100,10 +99,10 @@ outputSource: itemString
             ;
 
 outputFilter: itemIdentifier
-            { //fmt.Printf("OMG: %s\n", $1)
+            {
             $$=&parseNode{typ: filterListNode, value: $1}}
             | itemIdentifier itemColon outputSource
-            { //fmt.Printf("OMG: %s : %s \n", $1, $3.value)
+            {
             $$=&parseNode{typ: filterListNode, value: $1}}
             | outputFilter itemPipe outputFilter
             {$$=&parseNode{typ: filterListNode, value: nil}}
@@ -124,6 +123,7 @@ outputData:  outputSource
 %%
 
 func Parse(liquid string) (*ListNode, error) {
+  ParseTree = ListNode{}
   if 0 == yyParse(lex("lexer", liquid)) {
     return &ParseTree, nil
   } else {

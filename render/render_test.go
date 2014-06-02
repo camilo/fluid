@@ -18,7 +18,7 @@ func Example_liquid_only_with_literal() {
 	bindings := map[string]interface{}{}
 	renderAndPrintLiquid(liquid, bindings)
 	// Output:
-	// literal
+	// 'literal'
 }
 
 func Example_text_only() {

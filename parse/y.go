@@ -1,20 +1,22 @@
-
 //line fluid.y:2
 package parse
+
 import __yyfmt__ "fmt"
+
 //line fluid.y:2
-		import ("errors"
+import (
+	"errors"
 )
 
 var ParseTree ListNode
 
-//line fluid.y:9
-type yySymType struct{
-	yys int
-  typ int
-  pos int
-  val string
-  node *parseNode
+//line fluid.y:8
+type yySymType struct {
+	yys  int
+	typ  int
+	pos  int
+	val  string
+	node *parseNode
 }
 
 const itemError = 57346
@@ -74,21 +76,16 @@ const yyEofCode = 1
 const yyErrCode = 2
 const yyMaxDepth = 200
 
-//line fluid.y:124
-
-
+//line fluid.y:123
 func Parse(liquid string) (*ListNode, error) {
-  if 0 == yyParse(lex("lexer", liquid)) {
-    return &ParseTree, nil
-  } else {
-    return nil, errors.New("")
-  }
+	ParseTree = ListNode{}
+	if 0 == yyParse(lex("lexer", liquid)) {
+		return &ParseTree, nil
+	} else {
+		return nil, errors.New("")
+	}
 
 }
-
-
-
-
 
 //line yacctab:1
 var yyExca = []int{
@@ -384,89 +381,103 @@ yydefault:
 	switch yynt {
 
 	case 1:
-		//line fluid.y:50
+		//line fluid.y:49
 		{
-	          ParseTree.appendNode(&parseNode{typ: -1})
-	        }
+			ParseTree.appendNode(&parseNode{typ: -1})
+		}
 	case 2:
-		//line fluid.y:54
+		//line fluid.y:53
 		{
-	          ParseTree.appendNode(&parseNode{typ: -1, left: yyS[yypt-0].node})
-	        }
+			ParseTree.appendNode(&parseNode{typ: -1, left: yyS[yypt-0].node})
+		}
 	case 3:
-		//line fluid.y:58
+		//line fluid.y:57
 		{
-	          text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
-	          ParseTree.appendNode(&parseNode{typ: -1, left: text})
-	        }
+			text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
+			ParseTree.appendNode(&parseNode{typ: -1, left: text})
+		}
 	case 4:
-		//line fluid.y:63
+		//line fluid.y:62
 		{
-	          text := &parseNode{typ: textNode, value: yyS[yypt-1].val}
-	          ParseTree.appendNode(&parseNode{-1, text, yyS[yypt-0].node, nil})
-	        }
+			text := &parseNode{typ: textNode, value: yyS[yypt-1].val}
+			ParseTree.appendNode(&parseNode{-1, text, yyS[yypt-0].node, nil})
+		}
 	case 5:
-		//line fluid.y:68
+		//line fluid.y:67
 		{
-	          text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
-	          ParseTree.appendNode(&parseNode{-1, yyS[yypt-1].node, text, nil})
-	        }
+			text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
+			ParseTree.appendNode(&parseNode{-1, yyS[yypt-1].node, text, nil})
+		}
 	case 6:
-		//line fluid.y:73
+		//line fluid.y:72
 		{
-	          ParseTree.appendNode(yyS[yypt-0].node)
-	        }
+			ParseTree.appendNode(yyS[yypt-0].node)
+		}
 	case 7:
-		//line fluid.y:77
+		//line fluid.y:76
 		{
-	          text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
-	          ParseTree.appendNode(text)
-	        }
+			text := &parseNode{typ: textNode, value: yyS[yypt-0].val}
+			ParseTree.appendNode(text)
+		}
 	case 8:
-		//line fluid.y:84
+		//line fluid.y:83
 		{
-	       // outputData rule returns liquidNode
-       yyVAL.node = yyS[yypt-1].node
-	       }
+			// outputData rule returns liquidNode
+			yyVAL.node = yyS[yypt-1].node
+		}
 	case 9:
-		//line fluid.y:91
-		{yyVAL.node = &parseNode{typ: litNode, value: yyS[yypt-0].val}}
+		//line fluid.y:90
+		{
+			yyVAL.node = &parseNode{typ: litNode, value: yyS[yypt-0].val}
+		}
 	case 10:
-		//line fluid.y:93
-		{yyVAL.node = &parseNode{typ: litNode, value: yyS[yypt-0].val}}
+		//line fluid.y:92
+		{
+			yyVAL.node = &parseNode{typ: litNode, value: yyS[yypt-0].val}
+		}
 	case 11:
-		//line fluid.y:95
-		{yyVAL.node = &parseNode{typ: litNode, value:yyS[yypt-0].val}}
+		//line fluid.y:94
+		{
+			yyVAL.node = &parseNode{typ: litNode, value: yyS[yypt-0].val}
+		}
 	case 12:
-		//line fluid.y:97
-		{yyVAL.node = &parseNode{typ: identifierNode, value: identifier{yyS[yypt-0].val, ""}}}
+		//line fluid.y:96
+		{
+			yyVAL.node = &parseNode{typ: identifierNode, value: identifier{yyS[yypt-0].val, ""}}
+		}
 	case 13:
-		//line fluid.y:99
-		{yyVAL.node = &parseNode{typ: identifierNode, value: identifier{yyS[yypt-2].val, yyS[yypt-0].val}}}
+		//line fluid.y:98
+		{
+			yyVAL.node = &parseNode{typ: identifierNode, value: identifier{yyS[yypt-2].val, yyS[yypt-0].val}}
+		}
 	case 14:
-		//line fluid.y:103
-		{ //fmt.Printf("OMG: %s\n", $1)
-            yyVAL.node=&parseNode{typ: filterListNode, value: yyS[yypt-0].val}}
+		//line fluid.y:102
+		{
+			yyVAL.node = &parseNode{typ: filterListNode, value: yyS[yypt-0].val}
+		}
 	case 15:
-		//line fluid.y:106
-		{ //fmt.Printf("OMG: %s : %s \n", $1, $3.value)
-            yyVAL.node=&parseNode{typ: filterListNode, value: yyS[yypt-2].val}}
+		//line fluid.y:105
+		{
+			yyVAL.node = &parseNode{typ: filterListNode, value: yyS[yypt-2].val}
+		}
 	case 16:
-		//line fluid.y:109
-		{yyVAL.node=&parseNode{typ: filterListNode, value: nil}}
+		//line fluid.y:108
+		{
+			yyVAL.node = &parseNode{typ: filterListNode, value: nil}
+		}
 	case 17:
-		//line fluid.y:113
+		//line fluid.y:112
 		{
-	        source := &parseNode{typ: outputSourceNode, value: yyS[yypt-0].node}
-	        yyVAL.node = &parseNode{typ: liquidNode, left: source}
-	      }
+			source := &parseNode{typ: outputSourceNode, value: yyS[yypt-0].node}
+			yyVAL.node = &parseNode{typ: liquidNode, left: source}
+		}
 	case 18:
-		//line fluid.y:118
+		//line fluid.y:117
 		{
-	        source := &parseNode{typ: outputSourceNode, value: yyS[yypt-2].node}
-	        filters := &parseNode{typ: filterListNode, value: nil}
-	        yyVAL.node = &parseNode{typ: liquidNode, left: source, right: filters}
-	      }
+			source := &parseNode{typ: outputSourceNode, value: yyS[yypt-2].node}
+			filters := &parseNode{typ: filterListNode, value: nil}
+			yyVAL.node = &parseNode{typ: liquidNode, left: source, right: filters}
+		}
 	}
 	goto yystack /* stack new state and value */
 }
